@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "80578822425",
+    "project_id": "apartmentapp-e5c6f",
+    "storage_bucket": "apartmentapp-e5c6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80578822425:android:47bd8f6cad44f587228588",
+        "android_client_info": {
+          "package_name": "com.example.apartment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80578822425-kque3m8muhdsebu1m4jk42ojq0rocf0u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQpx9LxQJ4gQj8pjr5oMYJzGj3xaZxzfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80578822425-kque3m8muhdsebu1m4jk42ojq0rocf0u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
