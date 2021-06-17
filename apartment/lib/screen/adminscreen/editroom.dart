@@ -258,6 +258,8 @@ class _EditroomState extends State<Editroom> {
                                       'username ซ้ำ กรุณาเปลี่ยนเพื่อให่ไม่ซ้ำกับผู้อื่น');
                                 } else {
                                   uploadImage();
+                                  editroom().deleteroomavailable(
+                                      apartmentname, widget.idroom);
                                   editroom().createuser(
                                       username,
                                       password,

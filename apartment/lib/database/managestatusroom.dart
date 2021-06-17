@@ -191,4 +191,32 @@ class editroom {
     });
   }
   //////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////   available room   ////////////////////////////////
+  Future<void> plusroomavailable(String apartmentname, String idroom) async {
+    await Firebase.initializeApp().then((value) async {
+      FirebaseAuth.instance.authStateChanges().listen((event) {
+        FirebaseFirestore.instance
+            .collection(apartmentname)
+            .doc('detail')
+            .collection('roomavailable')
+            .doc(idroom)
+            .set({"available": '1'});
+      });
+    });
+  }
+
+  Future<void> deleteroomavailable(String apartmentname, String idroom) async {
+    await Firebase.initializeApp().then((value) async {
+      FirebaseAuth.instance.authStateChanges().listen((event) {
+        FirebaseFirestore.instance
+            .collection(apartmentname)
+            .doc('detail')
+            .collection('roomavailable')
+            .doc(idroom)
+            .delete();
+      });
+    });
+  }
+  //////////////////////////////////////////////////////////////////////////////
 }

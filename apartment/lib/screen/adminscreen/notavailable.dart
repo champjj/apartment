@@ -1,3 +1,4 @@
+import 'package:apartment/database/managestatusroom.dart';
 import 'package:apartment/dialog/dialogbox.dart';
 import 'package:apartment/model/overdue_model.dart';
 import 'package:apartment/screen/adminscreen/checkpayment.dart';
@@ -309,6 +310,7 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
                 child: TextButton(
                   onPressed: () {
                     moveout();
+                    editroom().plusroomavailable(apartmentname, widget.idroom);
                   },
                   child: Text(
                     'ยกเลิกสัญญา / ย้ายออก',

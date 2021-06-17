@@ -121,11 +121,20 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                 .collection('roominfloor')
                 .where('overdue', isEqualTo: '1')
                 .get()
-                .then((over) {
-              setState(() {
-                overdue = over.size;
-                outstatus = out.size;
-                available = snap.size;
+                .then((over) async {
+              await FirebaseFirestore.instance
+                  .collection(apartmentname)
+                  .doc('detail')
+                  .collection('roomavailable')
+                  .where('available', isEqualTo: '1')
+                  .get()
+                  .then((allavb) {
+                setState(() {
+                  allavailable = allavb.size;
+                  overdue = over.size;
+                  outstatus = out.size;
+                  available = snap.size;
+                });
               });
             });
           });
@@ -149,7 +158,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    '    ห้องว่าง($available)\nห้องว่างทั้งหมด()',
+                    '    ห้องว่าง($available)\nห้องว่างทั้งหมด($allavailable)',
                     style: TextStyle(color: Colors.white),
                   ),
                   Text(
@@ -418,9 +427,15 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                     padding: const EdgeInsets.only(left: 6),
                     child: TextButton(
                       onPressed: () {
-                        iroom < 10
-                            ? editroom().addroom("$ifloor", "0$iroom")
-                            : editroom().addroom("$ifloor", iroom);
+                        if (iroom < 10) {
+                          editroom().addroom("$ifloor", "0$iroom");
+                          editroom().plusroomavailable(
+                              apartmentname, "${ifloor}0$iroom");
+                        } else {
+                          editroom().addroom("$ifloor", iroom);
+                          editroom().plusroomavailable(apartmentname, iroom);
+                        }
+
                         checkStatusroom();
                       },
                       child: Text(
@@ -470,10 +485,15 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                             if (iroom < 10) {
                               deroom = "$ifloor" "0${iroom.toString()}";
                               editroom().deleteroom(deroom, '$ifloor');
+                              editroom()
+                                  .deleteroomavailable(apartmentname, deroom);
                             } else {
                               deroom = "$ifloor$iroom";
                               editroom().deleteroom(deroom, '$ifloor');
+                              editroom()
+                                  .deleteroomavailable(apartmentname, deroom);
                             }
+
                             checkStatusroom();
                             Navigator.pop(context);
                           },
