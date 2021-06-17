@@ -141,8 +141,6 @@ class _EditroomState extends State<Editroom> {
                                 chooseImage(ImageSource.gallery);
                               },
                               child: Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black)),
                                   child: file == null
                                       ? Icon(Icons.supervised_user_circle)
                                       : Image.file(file)),

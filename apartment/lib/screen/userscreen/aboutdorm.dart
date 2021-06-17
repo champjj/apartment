@@ -28,6 +28,7 @@ class _AboutdormState extends State<Aboutdorm> {
   String rule = 'กรอกข้อความ';
   String number = 'กรอกเบอร์โทรศัพท์';
   String apartmentname = 'Loading...';
+  String urlimg;
   var firebaseuser = FirebaseAuth.instance.currentUser;
 
   @override
@@ -69,6 +70,22 @@ class _AboutdormState extends State<Aboutdorm> {
     });
   }
 
+  Future<void> getimg() async {
+    await Firebase.initializeApp().then((value) async {
+      await FirebaseFirestore.instance
+          .collection(widget.apartment)
+          .doc('detail')
+          .collection('managehome')
+          .doc('rule')
+          .get()
+          .then((str) {
+        setState(() {
+          urlimg = str['urlimg'];
+        });
+      });
+    });
+  }
+
   Future<void> numb() async {
     await Firebase.initializeApp().then((value) async {
       await FirebaseFirestore.instance
@@ -91,6 +108,7 @@ class _AboutdormState extends State<Aboutdorm> {
         anc();
         rul();
         numb();
+        getimg();
       });
     });
   }
@@ -109,7 +127,7 @@ class _AboutdormState extends State<Aboutdorm> {
                 height: 100,
                 decoration: BoxDecoration(),
                 child: Image.network(
-                  img,
+                  urlimg == null ? img : urlimg,
                   loadingBuilder: (context, child, progress) {
                     return progress == null ? child : LinearProgressIndicator();
                   },
