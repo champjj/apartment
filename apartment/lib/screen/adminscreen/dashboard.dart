@@ -99,8 +99,8 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomPadding: false,
+      // resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
