@@ -24,9 +24,11 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
   dynamic available = 0;
   dynamic overdue = 0;
   dynamic outstatus = 0;
+  dynamic allavailable = 0;
   String water;
   String elec;
   String apartmentname = 'Loading...';
+
   var dataselect;
   final firebaseuser = FirebaseAuth.instance.currentUser;
   FirebaseFirestore firebasefirestore = FirebaseFirestore.instance;
@@ -147,7 +149,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    'ห้องว่าง($available)',
+                    '    ห้องว่าง($available)\nห้องว่างทั้งหมด()',
                     style: TextStyle(color: Colors.white),
                   ),
                   Text(

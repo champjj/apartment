@@ -29,7 +29,6 @@ class _AdminHomepageState extends State<AdminHomepage> {
   void initState() {
     super.initState();
     displayname();
-    getimg();
   }
 
   Future<void> anc() async {
@@ -192,7 +191,7 @@ class _AdminHomepageState extends State<AdminHomepage> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.grey,
+                    color: Colors.green,
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(10)),
                 child: Center(

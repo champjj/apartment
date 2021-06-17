@@ -129,7 +129,7 @@ class editroom {
         "floor": "$floor",
         "room": "$room",
         "urlimg": "$img"
-      }).then((value) => print("Create Success"));
+      }, SetOptions(merge: true)).then((value) => print("Create Success"));
     });
   }
 

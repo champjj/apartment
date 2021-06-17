@@ -60,8 +60,6 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
     super.initState();
     setoverduestatus("0");
     displayname();
-    getwaterelec();
-    getdataroom();
     getbill();
 
     datenow = '$dateday' + '/' + '$datemonth' + '/' + '$dateyear';
@@ -261,9 +259,9 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
                         title: Container(
                             height: 70,
                             width: 70,
-                            child: urlimg == 'null'
+                            child: urlimg == null
                                 ? Icon(Icons.supervised_user_circle)
-                                : urlimg),
+                                : Image.network(urlimg)),
                       ),
                       ListTile(
                         leading: Text('ชื่อ'),
@@ -612,20 +610,6 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
                   ),
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(bottom: 40),
-              //   child: TextButton(
-              //     onPressed: () {},
-              //     child: Text(
-              //       '    Upload สัญญาเช่า   ',
-              //       style: TextStyle(color: Colors.black),
-              //     ),
-              //     style: TextButton.styleFrom(
-              //       backgroundColor: Colors.green,
-              //       side: BorderSide(color: Colors.black),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),

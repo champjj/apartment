@@ -31,7 +31,7 @@ class _EditroomState extends State<Editroom> {
       idcard = '',
       note = '',
       apartmentname = '',
-      urlimg = '';
+      urlimg = 'null';
   dynamic chuser = '';
   File file;
 
@@ -47,7 +47,7 @@ class _EditroomState extends State<Editroom> {
   Future<void> uploadImage() async {
     FirebaseStorage firebaseStorage = FirebaseStorage.instance;
     StorageReference storageReference =
-        firebaseStorage.ref().child("userimage");
+        firebaseStorage.ref().child("userimage/$username");
     StorageUploadTask storageUploadTask = storageReference.putFile(file);
     urlimg = await (await storageUploadTask.onComplete).ref.getDownloadURL();
     getimgsave(urlimg);
@@ -63,6 +63,22 @@ class _EditroomState extends State<Editroom> {
     } catch (e) {}
   }
 
+  Future<void> getimgsave(String pic) async {
+    await Firebase.initializeApp().then((value) async {
+      FirebaseFirestore.instance
+          .collection(apartmentname)
+          .doc('detail')
+          .collection('room')
+          .doc('${widget.idfloor}')
+          .collection('roominfloor')
+          .doc('${widget.idroom}')
+          .set({
+        "urlimg": pic,
+      }, SetOptions(merge: true)).then((value) {
+        print(pic);
+      });
+    });
+  }
   //////////////////////////////////////////////////////////////////////////
 
   Future<void> displayname() async {
@@ -85,21 +101,6 @@ class _EditroomState extends State<Editroom> {
         setState(() {
           chuser = value.size;
         });
-      });
-    });
-  }
-
-  Future<void> getimgsave(String pic) async {
-    await Firebase.initializeApp().then((value) async {
-      FirebaseFirestore.instance
-          .collection(apartmentname)
-          .doc('detail')
-          .collection('managehome')
-          .doc('img')
-          .set({
-        "urlimg": pic,
-      }).then((value) {
-        print(pic);
       });
     });
   }
@@ -264,7 +265,7 @@ class _EditroomState extends State<Editroom> {
                                       apartmentname,
                                       widget.idfloor,
                                       widget.idroom,
-                                      "$apartmentname");
+                                      urlimg);
                                   editroom()
                                       .adduser(
                                           widget.idfloor,
@@ -277,7 +278,7 @@ class _EditroomState extends State<Editroom> {
                                           idcard,
                                           adddress,
                                           note,
-                                          "$file")
+                                          urlimg)
                                       .then((value) =>
                                           Navigator.pushReplacement(
                                               context,
@@ -307,20 +308,6 @@ class _EditroomState extends State<Editroom> {
                   ),
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(bottom: 40),
-              //   child: TextButton(
-              //     onPressed: () {},
-              //     child: Text(
-              //       '    Upload สัญญาเช่า   ',
-              //       style: TextStyle(color: Colors.black),
-              //     ),
-              //     style: TextButton.styleFrom(
-              //       backgroundColor: Colors.green,
-              //       side: BorderSide(color: Colors.black),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
