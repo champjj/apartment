@@ -50,6 +50,7 @@ class _EditroomState extends State<Editroom> {
         firebaseStorage.ref().child("userimage");
     StorageUploadTask storageUploadTask = storageReference.putFile(file);
     urlimg = await (await storageUploadTask.onComplete).ref.getDownloadURL();
+    getimgsave(urlimg);
   }
 
   Future<void> chooseImage(ImageSource imageSource) async {
@@ -84,6 +85,21 @@ class _EditroomState extends State<Editroom> {
         setState(() {
           chuser = value.size;
         });
+      });
+    });
+  }
+
+  Future<void> getimgsave(String pic) async {
+    await Firebase.initializeApp().then((value) async {
+      FirebaseFirestore.instance
+          .collection(apartmentname)
+          .doc('detail')
+          .collection('managehome')
+          .doc('img')
+          .set({
+        "urlimg": pic,
+      }).then((value) {
+        print(pic);
       });
     });
   }
