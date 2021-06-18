@@ -27,6 +27,9 @@ class _PaymentpageState extends State<Paymentpage> {
   var water = '';
   var getdata;
   String shroom = '';
+  String showdate;
+  String day, month, year;
+  String sumdate;
   @override
   void initState() {
     super.initState();
@@ -87,6 +90,11 @@ class _PaymentpageState extends State<Paymentpage> {
                       shrinkWrap: true,
                       itemCount: _list.length,
                       itemBuilder: (BuildContext context, int index) {
+                        showdate = _list[index]["date"].toString();
+                        year = showdate.substring(0, 4);
+                        month = showdate.substring(4, 6);
+                        day = showdate.substring(6);
+                        sumdate = "$day/$month/$year";
                         return Padding(
                           padding: const EdgeInsets.all(20),
                           child: Container(
@@ -101,8 +109,7 @@ class _PaymentpageState extends State<Paymentpage> {
                                             BorderRadius.circular(15)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                          "ยอดชำระของวันที่ ${_list[index]["date"].toString()}"),
+                                      child: Text("ยอดชำระของวันที่ $sumdate"),
                                     ),
                                   ),
                                 ),

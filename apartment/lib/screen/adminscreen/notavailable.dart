@@ -260,7 +260,7 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
                         title: Container(
                             height: 70,
                             width: 70,
-                            child: urlimg == null
+                            child: urlimg == null || urlimg == 'null'
                                 ? Icon(Icons.supervised_user_circle)
                                 : Image.network(urlimg)),
                       ),

@@ -41,26 +41,26 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
     ifloor = '1';
   }
 
-  void switchsearch() {
-    if (searchtext.isEmpty) {
-      dataselect = FirebaseFirestore.instance
-          .collection(apartmentname)
-          .doc('detail')
-          .collection('room')
-          .doc("$ifloor")
-          .collection("roominfloor")
-          .snapshots();
-    } else {
-      dataselect = FirebaseFirestore.instance
-          .collection(apartmentname)
-          .doc('detail')
-          .collection('room')
-          .doc("$ifloor")
-          .collection("roominfloor")
-          .where("room", isEqualTo: searchtext)
-          .snapshots();
-    }
-  }
+  // void switchsearch() {
+  //   if (searchtext.length == 0) {
+  //     dataselect = FirebaseFirestore.instance
+  //         .collection(apartmentname)
+  //         .doc('detail')
+  //         .collection('room')
+  //         .doc("$ifloor")
+  //         .collection("roominfloor")
+  //         .snapshots();
+  //   } else {
+  //     dataselect = FirebaseFirestore.instance
+  //         .collection(apartmentname)
+  //         .doc('detail')
+  //         .collection('room')
+  //         .doc("$ifloor")
+  //         .collection("roominfloor")
+  //         .where("room", isEqualTo: searchtext)
+  //         .snapshots();
+  //   }
+  // }
 
   Future<void> displayname() async {
     await Firebase.initializeApp().then((value) async {
@@ -172,7 +172,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                 ],
               ),
             ),
-            /////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////  ปุ่มแก้ค่าน้ำค่าไฟ  //////////////////////////////////////////
             Padding(
               padding: const EdgeInsets.only(left: 40),
               child: ListTile(
@@ -194,7 +194,6 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                   onChanged: (value) {
                     setState(() {
                       searchtext = value;
-                      switchsearch();
                     });
                   },
                   initialValue: searchtext,
@@ -212,7 +211,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
               ),
             ),
 
-            /////////////////////////////////////   Floor   ////////////////////////////////////////
+            /////////////////////////////////////   แสดงชั้น   ////////////////////////////////////////
             Container(
               child: Row(
                 children: [
@@ -280,7 +279,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                       ),
                     ),
                   ),
-                  /////////////////////////////////  Button add delete Floor  ////////////////////////////////////////
+                  /////////////////////////////////  ปุ่มเพิ่ม ลบ ชั้น  ////////////////////////////////////////
                   Container(
                     child: TextButton(
                       onPressed: () {
@@ -315,7 +314,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                 ],
               ),
             ),
-            /////////////////////  ListView Room  ///////////////////////////////////////
+            /////////////////////  แสดงห้องในชั้น  ///////////////////////////////////////
 
             StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
