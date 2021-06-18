@@ -60,6 +60,7 @@ class _DashboardPageState extends State<DashboardPage> {
     });
   }
 
+///////////////////////////////  คำนวณราคาผลรวม   ////////////////////////////////////////////
   void getbill() async {
     await Firebase.initializeApp().then((value) {
       firestore
@@ -95,6 +96,7 @@ class _DashboardPageState extends State<DashboardPage> {
       });
     });
   }
+  //////////////////////////////////////////////////////////////////////////////////
 
   @override
   Widget build(BuildContext context) {
@@ -144,6 +146,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      //////////////////////////////////////   ปุ่มเลือกวันแรก   ///////////////////////////////////////////
                       InkWell(
                         onTap: () {
                           datepicker();
@@ -182,6 +185,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         child: Text('ถึง'),
                         width: 30,
                       ),
+                      //////////////////////////////////////   ปุ่มเลือกวันสุดท้าย   ///////////////////////////////////////////
                       InkWell(
                         onTap: () {
                           datepickeruntil();
@@ -231,6 +235,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
               ),
             ),
+            ///////////////////////////// ตารางแสดงรวมรายรับรายจ่าย  /////////////////////////////////////////
             Padding(
               padding: const EdgeInsets.only(bottom: 100),
               child: Container(
