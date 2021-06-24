@@ -104,7 +104,7 @@ class _AdminRegisterState extends State<AdminRegister> {
     );
   }
 
-////////////  Signin   ///////////////////////////////////////
+//////////////////////////////  Signin   ///////////////////////////////////////
   Future<Null> _register() async {
     String semail = email.text.trim();
     String spassword = password.text.trim();
