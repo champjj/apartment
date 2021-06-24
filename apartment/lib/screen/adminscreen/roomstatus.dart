@@ -28,6 +28,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
   String water;
   String elec;
   String apartmentname = 'Loading...';
+  dynamic firebasedatabase;
 
   var dataselect;
   final firebaseuser = FirebaseAuth.instance.currentUser;
@@ -38,7 +39,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
     super.initState();
     displayname();
     checkStatusroom();
-    ifloor = '1';
+    ifloor = "1";
   }
 
   Future<void> displayname() async {
@@ -47,6 +48,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
         setState(() {
           apartmentname = event.displayName;
           getwaterelec();
+          firstdata();
         });
       });
     });
@@ -78,8 +80,6 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
             .collection(event.displayName)
             .doc('detail')
             .collection('room')
-            // .doc('$ifloor')
-            // .collection('roominfloor')
             .where('status', isEqualTo: '0')
             .where('floor', isEqualTo: ifloor)
             .get()
@@ -88,8 +88,6 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
               .collection(event.displayName)
               .doc('detail')
               .collection('room')
-              // .doc('$ifloor')
-              // .collection('roominfloor')
               .where('outstatus', isEqualTo: '1')
               .get()
               .then((out) async {
@@ -97,8 +95,6 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                 .collection(event.displayName)
                 .doc('detail')
                 .collection('room')
-                // .doc('$ifloor')
-                // .collection('roominfloor')
                 .where('overdue', isEqualTo: '1')
                 .get()
                 .then((over) async {
@@ -122,10 +118,38 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
       });
     });
   }
+  //////////////////////////////////////////////////////////////////////////////////
 
-  void _search(value) {
-    setState(() {
-      searchtext = value;
+  void _search() async {
+    if (searchtext.length > 0) {
+      setState(() {
+        firebasedatabase = FirebaseFirestore.instance
+            .collection(apartmentname)
+            .doc('detail')
+            .collection('room')
+            .where('name', isEqualTo: searchtext)
+            .snapshots();
+      });
+    } else {
+      setState(() {
+        firebasedatabase = FirebaseFirestore.instance
+            .collection(apartmentname)
+            .doc('detail')
+            .collection('room')
+            .where('floor', isEqualTo: "$ifloor")
+            .snapshots();
+      });
+    }
+  }
+
+  void firstdata() {
+    setState(() async {
+      firebasedatabase = FirebaseFirestore.instance
+          .collection(apartmentname)
+          .doc('detail')
+          .collection('room')
+          .where('floor', isEqualTo: "$ifloor")
+          .snapshots();
     });
   }
 
@@ -179,8 +203,8 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                 title: TextFormField(
                   onChanged: (value) {
                     setState(() {
-                      _search(
-                          value.toLowerCase().contains(value.toLowerCase()));
+                      searchtext = value;
+                      _search();
                     });
                   },
                   initialValue: searchtext,
@@ -218,6 +242,8 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                             AsyncSnapshot<QuerySnapshot> querySnapshot) {
                           if (querySnapshot.hasError) {
                             return Text('เกิดข้อผิดพลาด ลองใหม่อีกครั้ง');
+                          } else if (!querySnapshot.hasData) {
+                            return LinearProgressIndicator();
                           } else {
                             final listfloor = querySnapshot.data.docs;
                             defloor = listfloor.length;
@@ -243,6 +269,8 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                                       setState(() {
                                         ifloor = listfloor[index]['floor'];
                                         checkStatusroom();
+                                        firstdata();
+                                        print(ifloor);
                                       });
                                     },
                                     child: ListTile(
@@ -301,23 +329,15 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                 ],
               ),
             ),
-            /////////////////////  แสดงห้องในชั้น  ///////////////////////////////////////
+            /////////////////////  แสดงห้อง  ///////////////////////////////////////
 
             StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance
-                  .collection(apartmentname)
-                  .doc('detail')
-                  .collection('room')
-                  .doc("$ifloor")
-                  .collection("roominfloor")
-                  .where("room", isEqualTo: searchtext)
-                  .snapshots(),
+              stream: firebasedatabase,
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> querySnapshot) {
                 if (querySnapshot.hasError) {
                   return Text('เกิดข้อผิดพลาด ลองใหม่อีกครั้ง');
-                } else if (querySnapshot.connectionState ==
-                    ConnectionState.waiting) {
+                } else if (!querySnapshot.hasData) {
                   return CircularProgressIndicator();
                 } else {
                   final _list = querySnapshot.data.docs;

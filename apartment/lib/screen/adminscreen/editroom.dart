@@ -69,8 +69,6 @@ class _EditroomState extends State<Editroom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('room')
-          .doc('${widget.idfloor}')
-          .collection('roominfloor')
           .doc('${widget.idroom}')
           .set({
         "urlimg": pic,
