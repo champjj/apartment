@@ -41,27 +41,6 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
     ifloor = '1';
   }
 
-  // void switchsearch() {
-  //   if (searchtext.length == 0) {
-  //     dataselect = FirebaseFirestore.instance
-  //         .collection(apartmentname)
-  //         .doc('detail')
-  //         .collection('room')
-  //         .doc("$ifloor")
-  //         .collection("roominfloor")
-  //         .snapshots();
-  //   } else {
-  //     dataselect = FirebaseFirestore.instance
-  //         .collection(apartmentname)
-  //         .doc('detail')
-  //         .collection('room')
-  //         .doc("$ifloor")
-  //         .collection("roominfloor")
-  //         .where("room", isEqualTo: searchtext)
-  //         .snapshots();
-  //   }
-  // }
-
   Future<void> displayname() async {
     await Firebase.initializeApp().then((value) async {
       FirebaseAuth.instance.authStateChanges().listen((event) {
@@ -99,17 +78,18 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
             .collection(event.displayName)
             .doc('detail')
             .collection('room')
-            .doc('$ifloor')
-            .collection('roominfloor')
+            // .doc('$ifloor')
+            // .collection('roominfloor')
             .where('status', isEqualTo: '0')
+            .where('floor', isEqualTo: ifloor)
             .get()
             .then((snap) async {
           await FirebaseFirestore.instance
               .collection(event.displayName)
               .doc('detail')
               .collection('room')
-              .doc('$ifloor')
-              .collection('roominfloor')
+              // .doc('$ifloor')
+              // .collection('roominfloor')
               .where('outstatus', isEqualTo: '1')
               .get()
               .then((out) async {
@@ -117,8 +97,8 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                 .collection(event.displayName)
                 .doc('detail')
                 .collection('room')
-                .doc('$ifloor')
-                .collection('roominfloor')
+                // .doc('$ifloor')
+                // .collection('roominfloor')
                 .where('overdue', isEqualTo: '1')
                 .get()
                 .then((over) async {
@@ -140,6 +120,12 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
           });
         });
       });
+    });
+  }
+
+  void _search(value) {
+    setState(() {
+      searchtext = value;
     });
   }
 
@@ -193,7 +179,8 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                 title: TextFormField(
                   onChanged: (value) {
                     setState(() {
-                      searchtext = value;
+                      _search(
+                          value.toLowerCase().contains(value.toLowerCase()));
                     });
                   },
                   initialValue: searchtext,
@@ -519,7 +506,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                     onPressed: () {
                       Navigator.pop(context);
                       editroom().deletefloor("$defloor");
-                      editroom().deleteAllroominfloor(defloor);
+                      // editroom().deleteAllroominfloor(defloor);
                     },
                     child: Text('ยืนยัน')),
                 TextButton(

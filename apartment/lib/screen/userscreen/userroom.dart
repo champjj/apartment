@@ -49,8 +49,8 @@ class _UserroomState extends State<Userroom> {
           .collection(widget.apartment)
           .doc('detail')
           .collection('room')
-          .doc(widget.floor)
-          .collection('roominfloor')
+          // .doc(widget.floor)
+          // .collection('roominfloor')
           .doc(widget.room)
           .get()
           .then((value) {

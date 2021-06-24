@@ -45,8 +45,8 @@ class editroom {
             .collection(event.displayName)
             .doc('detail')
             .collection('room')
-            .doc("$floor")
-            .collection("roominfloor")
+            // .doc("$floor")
+            // .collection("roominfloor")
             .doc("$floor$room")
             .set({
           "room": "$floor$room",
@@ -78,8 +78,8 @@ class editroom {
             .collection(event.displayName)
             .doc('detail')
             .collection('room')
-            .doc('$defloor')
-            .collection('roominfloor')
+            // .doc('$defloor')
+            // .collection('roominfloor')
             .doc(deroom)
             .delete()
             .then((value) => print('Delete Success'));
@@ -87,19 +87,19 @@ class editroom {
     });
   }
 
-  Future<void> deleteAllroominfloor(String daroom) async {
-    await Firebase.initializeApp().then((value) async {
-      FirebaseAuth.instance.authStateChanges().listen((event) {
-        FirebaseFirestore.instance
-            .collection(event.displayName)
-            .doc('detail')
-            .collection('room')
-            .doc(daroom)
-            .delete()
-            .then((value) => print('DeleteAllroom Success'));
-      });
-    });
-  }
+  // Future<void> deleteAllroominfloor(String daroom) async {
+  //   await Firebase.initializeApp().then((value) async {
+  //     FirebaseAuth.instance.authStateChanges().listen((event) {
+  //       FirebaseFirestore.instance
+  //           .collection(event.displayName)
+  //           .doc('detail')
+  //           .collection('room')
+  //           .doc(daroom)
+  //           .delete()
+  //           .then((value) => print('DeleteAllroom Success'));
+  //     });
+  //   });
+  // }
   ////////////////////////////////////  เปลี่ยนค่าน้ำค่าไฟ  //////////////////////////////////////////////
 
   Future<void> waterElecBill(String water, String elec) async {
@@ -128,7 +128,7 @@ class editroom {
         "apartment": "$apartment",
         "floor": "$floor",
         "room": "$room",
-        "urlimg": "$img"
+        // "urlimg": "$img"
       }, SetOptions(merge: true)).then((value) => print("Create Success"));
     });
   }
@@ -151,8 +151,8 @@ class editroom {
             .collection(event.displayName)
             .doc('detail')
             .collection('room')
-            .doc("$floor")
-            .collection("roominfloor")
+            // .doc("$floor")
+            // .collection("roominfloor")
             .doc("$room")
             .set({
           "room": "$room",

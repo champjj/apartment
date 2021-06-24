@@ -47,7 +47,7 @@ class _EditroomState extends State<Editroom> {
   Future<void> uploadImage() async {
     FirebaseStorage firebaseStorage = FirebaseStorage.instance;
     StorageReference storageReference =
-        firebaseStorage.ref().child("userimage/$username");
+        firebaseStorage.ref().child("userimage/$apartmentname$username");
     StorageUploadTask storageUploadTask = storageReference.putFile(file);
     urlimg = await (await storageUploadTask.onComplete).ref.getDownloadURL();
     getimgsave(urlimg);

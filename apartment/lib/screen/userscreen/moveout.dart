@@ -268,8 +268,8 @@ class _CheckoutState extends State<Checkout> {
           .collection(widget.apartment)
           .doc('detail')
           .collection('room')
-          .doc(widget.floor)
-          .collection('roominfloor')
+          // .doc(widget.floor)
+          // .collection('roominfloor')
           .doc(widget.room)
           .set({"outstatus": "1", "date": day}, SetOptions(merge: true));
     });

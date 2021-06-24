@@ -87,8 +87,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('meter')
-          .doc(widget.idfloor)
-          .collection('roominfloor')
+          // .doc(widget.idfloor)
+          // .collection('roominfloor')
           .doc(widget.idroom)
           .collection('bill')
           .where("room", isEqualTo: "${widget.idroom}")
@@ -120,8 +120,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('room')
-          .doc(widget.idfloor)
-          .collection('roominfloor')
+          // .doc(widget.idfloor)
+          // .collection('roominfloor')
           .doc(widget.idroom)
           .set({"overdue": "$status"}, SetOptions(merge: true));
     });
@@ -133,8 +133,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('room')
-          .doc('${widget.idfloor}')
-          .collection('roominfloor')
+          // .doc('${widget.idfloor}')
+          // .collection('roominfloor')
           .doc('${widget.idroom}')
           .set({"detailroom": "$roomed"}, SetOptions(merge: true));
     });
@@ -163,8 +163,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('room')
-          .doc('${widget.idfloor}')
-          .collection('roominfloor')
+          // .doc('${widget.idfloor}')
+          // .collection('roominfloor')
           .doc('${widget.idroom}')
           .get()
           .then((gdata) {
@@ -780,8 +780,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('room')
-          .doc('${widget.idfloor}')
-          .collection('roominfloor')
+          // .doc('${widget.idfloor}')
+          // .collection('roominfloor')
           .doc('${widget.idroom}')
           .set({
         "name": "$name",
@@ -864,8 +864,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
         .collection(apartmentname)
         .doc('detail')
         .collection('room')
-        .doc(widget.idfloor)
-        .collection('roominfloor')
+        // .doc(widget.idfloor)
+        // .collection('roominfloor')
         .doc(widget.idroom)
         .set({
       "status": "0",
@@ -901,8 +901,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('meter')
-          .doc('${widget.idfloor}')
-          .collection('roominfloor')
+          // .doc('${widget.idfloor}')
+          // .collection('roominfloor')
           .doc('${widget.idroom}')
           .collection('bill')
           .doc(eday)
