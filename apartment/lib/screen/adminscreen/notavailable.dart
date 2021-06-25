@@ -87,8 +87,6 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('meter')
-          // .doc(widget.idfloor)
-          // .collection('roominfloor')
           .doc(widget.idroom)
           .collection('bill')
           .where("room", isEqualTo: "${widget.idroom}")
@@ -120,8 +118,6 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('room')
-          // .doc(widget.idfloor)
-          // .collection('roominfloor')
           .doc(widget.idroom)
           .set({"overdue": "$status"}, SetOptions(merge: true));
     });
@@ -133,8 +129,6 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('room')
-          // .doc('${widget.idfloor}')
-          // .collection('roominfloor')
           .doc('${widget.idroom}')
           .set({"detailroom": "$roomed"}, SetOptions(merge: true));
     });
@@ -163,12 +157,11 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('room')
-          // .doc('${widget.idfloor}')
-          // .collection('roominfloor')
           .doc('${widget.idroom}')
           .get()
           .then((gdata) {
         setState(() {
+          urlimg = gdata["urlimg"];
           name = gdata["name"];
           adddress = gdata["adddress"];
           phone = gdata["number"];
@@ -176,7 +169,6 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           note = gdata["note"];
           overdue = gdata["overdue"];
           roomnote = gdata["detailroom"];
-          urlimg = gdata["urlimg"];
           outstatus = gdata["outstatus"];
           if (outstatus == '1') {
             check = false;
@@ -780,8 +772,6 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('room')
-          // .doc('${widget.idfloor}')
-          // .collection('roominfloor')
           .doc('${widget.idroom}')
           .set({
         "name": "$name",

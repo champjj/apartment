@@ -65,6 +65,7 @@ class editroom {
           "date": "",
           "urlimg": "",
           "detailroom": "",
+          "showdate": "",
         }, SetOptions(merge: true)).then(
                 (value) => print('Success create floor'));
       });
@@ -86,20 +87,6 @@ class editroom {
       });
     });
   }
-
-  // Future<void> deleteAllroominfloor(String daroom) async {
-  //   await Firebase.initializeApp().then((value) async {
-  //     FirebaseAuth.instance.authStateChanges().listen((event) {
-  //       FirebaseFirestore.instance
-  //           .collection(event.displayName)
-  //           .doc('detail')
-  //           .collection('room')
-  //           .doc(daroom)
-  //           .delete()
-  //           .then((value) => print('DeleteAllroom Success'));
-  //     });
-  //   });
-  // }
   ////////////////////////////////////  เปลี่ยนค่าน้ำค่าไฟ  //////////////////////////////////////////////
 
   Future<void> waterElecBill(String water, String elec) async {
@@ -151,8 +138,6 @@ class editroom {
             .collection(event.displayName)
             .doc('detail')
             .collection('room')
-            // .doc("$floor")
-            // .collection("roominfloor")
             .doc("$room")
             .set({
           "room": "$room",

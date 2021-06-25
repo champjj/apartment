@@ -28,6 +28,9 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
   String water;
   String elec;
   String apartmentname = 'Loading...';
+  String showdate;
+  String day, month, year;
+  String sumdate;
   dynamic firebasedatabase;
 
   var dataselect;
@@ -127,7 +130,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
             .collection(apartmentname)
             .doc('detail')
             .collection('room')
-            .where('name', isEqualTo: searchtext)
+            .where('name', isGreaterThanOrEqualTo: searchtext)
             .snapshots();
       });
     } else {
@@ -380,10 +383,10 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                               },
                               child: ListTile(
                                 leading: Text("Room ${_list[index]["room"]}"),
-                                title: Text(
-                                    _list[index]["outstatus"] == 0.toString()
-                                        ? ""
-                                        : "ต้องการย้ายออก"),
+                                title: Text(_list[index]["outstatus"] ==
+                                        0.toString()
+                                    ? ''
+                                    : "ต้องการย้ายออก ${_list[index]["showdate"]}"),
                                 trailing: Text(
                                   _list[index]["status"] == 0.toString()
                                       ? 'ว่าง'

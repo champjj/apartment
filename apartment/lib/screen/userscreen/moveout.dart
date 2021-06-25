@@ -262,7 +262,7 @@ class _CheckoutState extends State<Checkout> {
 
   /////////////////////////////  set status moveout   ///////////////////////////////
 
-  void setstatusmoveout(int day) async {
+  void setstatusmoveout(int day, String showday) async {
     await Firebase.initializeApp().then((value) async {
       FirebaseFirestore.instance
           .collection(widget.apartment)
@@ -271,7 +271,8 @@ class _CheckoutState extends State<Checkout> {
           // .doc(widget.floor)
           // .collection('roominfloor')
           .doc(widget.room)
-          .set({"outstatus": "1", "date": day}, SetOptions(merge: true));
+          .set({"outstatus": "1", "date": day, "showdate": showday},
+              SetOptions(merge: true));
     });
   }
 
@@ -287,7 +288,7 @@ class _CheckoutState extends State<Checkout> {
               children: [
                 TextButton(
                     onPressed: () {
-                      setstatusmoveout(setdate);
+                      setstatusmoveout(setdate, d);
                       Navigator.pop(context);
                     },
                     child: Text('ยืนยัน')),
