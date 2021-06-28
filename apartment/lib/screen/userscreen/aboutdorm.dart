@@ -76,7 +76,7 @@ class _AboutdormState extends State<Aboutdorm> {
           .collection(widget.apartment)
           .doc('detail')
           .collection('managehome')
-          .doc('rule')
+          .doc('img')
           .get()
           .then((str) {
         setState(() {
@@ -127,7 +127,7 @@ class _AboutdormState extends State<Aboutdorm> {
                 height: 100,
                 decoration: BoxDecoration(),
                 child: Image.network(
-                  urlimg == null ? img : urlimg,
+                  urlimg == null || urlimg == 'null' ? img : urlimg,
                   loadingBuilder: (context, child, progress) {
                     return progress == null ? child : LinearProgressIndicator();
                   },

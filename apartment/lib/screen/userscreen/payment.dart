@@ -66,8 +66,6 @@ class _PaymentpageState extends State<Paymentpage> {
                 .collection(widget.apartment)
                 .doc('detail')
                 .collection('meter')
-                .doc(widget.floor)
-                .collection('roominfloor')
                 .doc(widget.room)
                 .collection('bill')
                 .snapshots(),
