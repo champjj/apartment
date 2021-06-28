@@ -72,8 +72,6 @@ class _CheckpaymentState extends State<Checkpayment> {
                 .collection(apartmentname)
                 .doc('detail')
                 .collection('meter')
-                .doc(widget.idfloor)
-                .collection('roominfloor')
                 .doc(widget.idroom)
                 .collection('bill')
                 .snapshots(),
