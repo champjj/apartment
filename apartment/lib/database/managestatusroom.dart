@@ -165,8 +165,6 @@ class editroom {
             .collection(apartmentname)
             .doc('detail')
             .collection('meter')
-            .doc(floor)
-            .collection('roominfloor')
             .doc(room)
             .collection('bill')
             .doc(date)
