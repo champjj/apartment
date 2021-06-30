@@ -59,7 +59,6 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
   @override
   void initState() {
     super.initState();
-    setoverduestatus("0");
     displayname();
     getbill();
 
@@ -81,7 +80,7 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
     });
   }
 
-  void getbill() async {
+  Future<void> getbill() async {
     await Firebase.initializeApp().then((value) async {
       FirebaseFirestore.instance
           .collection(apartmentname)
@@ -95,16 +94,12 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .listen((event) {
         setState(() {
           overdueprice = 0;
+          event.size == 0 ? setoverduestatus('0') : setoverduestatus('1');
           for (var snapshots in event.docs) {
             Map<String, dynamic> map = snapshots.data();
             OverdueModel model = OverdueModel.fromMap(map);
             setState(() {
               overdueprice += model.total;
-              if (overdueprice < 1) {
-                setoverduestatus("0");
-              } else {
-                setoverduestatus("1");
-              }
             });
           }
         });
@@ -319,7 +314,7 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => Checkpayment(
@@ -854,8 +849,6 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
         .collection(apartmentname)
         .doc('detail')
         .collection('room')
-        // .doc(widget.idfloor)
-        // .collection('roominfloor')
         .doc(widget.idroom)
         .set({
       "status": "0",
@@ -891,8 +884,6 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           .collection(apartmentname)
           .doc('detail')
           .collection('meter')
-          // .doc('${widget.idfloor}')
-          // .collection('roominfloor')
           .doc('${widget.idroom}')
           .collection('bill')
           .doc(eday)
@@ -910,8 +901,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
         "date": savedate,
         "room": room,
         "overdue": "1",
-      }, SetOptions(merge: true)).then((value) {
-        getdataroom();
+      }).then((value) {
+        // getdataroom();
       });
     });
   }

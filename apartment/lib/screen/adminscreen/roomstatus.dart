@@ -52,6 +52,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
           apartmentname = event.displayName;
           getwaterelec();
           firstdata();
+          checkStatusroom();
         });
       });
     });
@@ -121,6 +122,7 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
       });
     });
   }
+
   //////////////////////////////////////////////////////////////////////////////////
 
   void _search() async {
@@ -382,7 +384,11 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                                 }
                               },
                               child: ListTile(
-                                leading: Text("Room ${_list[index]["room"]}"),
+                                leading: Text(
+                                  _list[index]["overdue"] == "0"
+                                      ? "Room ${_list[index]["room"]}"
+                                      : "Room ${_list[index]["room"]}\nค้างชำระ",
+                                ),
                                 title: Text(_list[index]["outstatus"] ==
                                         0.toString()
                                     ? ''
@@ -529,7 +535,6 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                     onPressed: () {
                       Navigator.pop(context);
                       editroom().deletefloor("$defloor");
-                      // editroom().deleteAllroominfloor(defloor);
                     },
                     child: Text('ยืนยัน')),
                 TextButton(

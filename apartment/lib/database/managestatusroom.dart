@@ -45,8 +45,6 @@ class editroom {
             .collection(event.displayName)
             .doc('detail')
             .collection('room')
-            // .doc("$floor")
-            // .collection("roominfloor")
             .doc("$floor$room")
             .set({
           "room": "$floor$room",
@@ -79,8 +77,6 @@ class editroom {
             .collection(event.displayName)
             .doc('detail')
             .collection('room')
-            // .doc('$defloor')
-            // .collection('roominfloor')
             .doc(deroom)
             .delete()
             .then((value) => print('Delete Success'));
@@ -115,7 +111,6 @@ class editroom {
         "apartment": "$apartment",
         "floor": "$floor",
         "room": "$room",
-        // "urlimg": "$img"
       }, SetOptions(merge: true)).then((value) => print("Create Success"));
     });
   }
@@ -169,7 +164,7 @@ class editroom {
             .collection('bill')
             .doc(date)
             .delete()
-            .then((value) => print(date));
+            .then((value) => print("delete$date"));
       });
     });
   }

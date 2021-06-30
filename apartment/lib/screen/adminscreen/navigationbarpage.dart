@@ -68,7 +68,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
                     TextButton(
                         onPressed: () {
                           FirebaseAuth.instance.signOut().then((value) {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => LoginPage()));

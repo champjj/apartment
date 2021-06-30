@@ -59,6 +59,17 @@ class _CheckpaymentState extends State<Checkpayment> {
     });
   }
 
+  Future<void> setoverduestatus(String status) async {
+    await Firebase.initializeApp().then((value) async {
+      await FirebaseFirestore.instance
+          .collection(apartmentname)
+          .doc('detail')
+          .collection('room')
+          .doc(widget.idroom)
+          .set({"overdue": "$status"}, SetOptions(merge: true));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
