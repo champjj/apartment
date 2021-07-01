@@ -105,8 +105,8 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
               await FirebaseFirestore.instance
                   .collection(apartmentname)
                   .doc('detail')
-                  .collection('roomavailable')
-                  .where('available', isEqualTo: '1')
+                  .collection('room')
+                  .where('status', isEqualTo: '0')
                   .get()
                   .then((allavb) {
                 setState(() {
