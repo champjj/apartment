@@ -101,19 +101,47 @@ class editroom {
 
 ////////////////////////////////  add User  /////////////////////////////
 
-  Future<void> createuser(String username, String password, String name,
-      String apartment, String floor, String room, String img) async {
+  Future<void> createuser(
+    String floor,
+    String room,
+    String status,
+    String name,
+    String username,
+    String password,
+    String number,
+    String idcard,
+    String adddress,
+    String note,
+  ) async {
     await Firebase.initializeApp().then((value) async {
       await FirebaseFirestore.instance.collection('user').doc(username).set({
+        "room": "$room",
+        "name": "$name",
+        "floor": "$floor",
+        "statusout": "$status",
         "username": "$username",
         "password": "$password",
-        "name": "$name",
-        "apartment": "$apartment",
-        "floor": "$floor",
-        "room": "$room",
+        "number": "$number",
+        "idcard": "$idcard",
+        "adddress": "$adddress",
+        "note": "$note",
       }, SetOptions(merge: true)).then((value) => print("Create Success"));
     });
   }
+
+  // Future<void> createuser(String username, String password, String name,
+  //     String apartment, String floor, String room, String img) async {
+  //   await Firebase.initializeApp().then((value) async {
+  //     await FirebaseFirestore.instance.collection('user').doc(username).set({
+  //       "username": "$username",
+  //       "password": "$password",
+  //       "name": "$name",
+  //       "apartment": "$apartment",
+  //       "floor": "$floor",
+  //       "room": "$room",
+  //     }, SetOptions(merge: true)).then((value) => print("Create Success"));
+  //   });
+  // }
 
   Future<void> adduser(
       String floor,

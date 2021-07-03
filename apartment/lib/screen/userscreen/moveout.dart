@@ -268,11 +268,13 @@ class _CheckoutState extends State<Checkout> {
           .collection(widget.apartment)
           .doc('detail')
           .collection('room')
-          // .doc(widget.floor)
-          // .collection('roominfloor')
           .doc(widget.room)
-          .set({"outstatus": "1", "date": day, "showdate": showday},
-              SetOptions(merge: true));
+          .set({
+        "outstatus": "1",
+        "date": day,
+        "showdate": showday
+      }, SetOptions(merge: true)).then(
+              (value) => print('outdate${widget.room}$day'));
     });
   }
 

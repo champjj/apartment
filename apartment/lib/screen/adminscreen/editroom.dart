@@ -257,13 +257,17 @@ class _EditroomState extends State<Editroom> {
                                   editroom().deleteroomavailable(
                                       apartmentname, widget.idroom);
                                   editroom().createuser(
-                                      username,
-                                      password,
-                                      name,
-                                      apartmentname,
-                                      widget.idfloor,
-                                      widget.idroom,
-                                      urlimg);
+                                    widget.idfloor,
+                                    widget.idroom,
+                                    '1',
+                                    name,
+                                    username,
+                                    password,
+                                    phone,
+                                    idcard,
+                                    adddress,
+                                    note,
+                                  );
                                   editroom()
                                       .adduser(
                                           widget.idfloor,
