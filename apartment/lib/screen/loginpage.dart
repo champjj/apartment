@@ -33,24 +33,13 @@ class _LoginPageState extends State<LoginPage> {
       await FirebaseFirestore.instance
           .collection('user')
           .where("username", isEqualTo: '$user')
+          .where("statusout", isEqualTo: "1")
           .get()
           .then((value) {
         setState(() {
           chuser = value.size;
           print("usernamestatus $chuser");
         });
-      });
-    });
-  }
-
-  Future<void> statusch() async {
-    await FirebaseFirestore.instance
-        .collection('user')
-        .where("statusout", isEqualTo: "1")
-        .get()
-        .then((value) {
-      setState(() {
-        statuscha = value.size;
       });
     });
   }
@@ -107,7 +96,6 @@ class _LoginPageState extends State<LoginPage> {
                   username = value;
                   chechusermember('$username');
                   loginuser(username);
-                  statusch();
                 });
               },
               controller: email,
@@ -124,7 +112,6 @@ class _LoginPageState extends State<LoginPage> {
                   inpassword = value;
                   loginuser(username);
                   chechusermemberpass('$inpassword');
-                  statusch();
                 });
               },
               controller: password,
