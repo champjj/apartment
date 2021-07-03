@@ -107,6 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                   username = value;
                   chechusermember('$username');
                   loginuser(username);
+                  statusch();
                 });
               },
               controller: email,
@@ -123,6 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                   inpassword = value;
                   loginuser(username);
                   chechusermemberpass('$inpassword');
+                  statusch();
                 });
               },
               controller: password,
@@ -136,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
             child: ListTile(
               title: TextButton(
                 onPressed: () {
-                  if ((chuser == 1) && (inpassword > 0) && (statuscha == 1)) {
+                  if ((chuser == 1) && (inpassword > 0)) {
                     setState(() {
                       loginuser(username);
                       Navigator.pushReplacement(

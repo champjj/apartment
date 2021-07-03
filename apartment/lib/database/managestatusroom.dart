@@ -102,17 +102,17 @@ class editroom {
 ////////////////////////////////  add User  /////////////////////////////
 
   Future<void> createuser(
-    String floor,
-    String room,
-    String status,
-    String name,
-    String username,
-    String password,
-    String number,
-    String idcard,
-    String adddress,
-    String note,
-  ) async {
+      String floor,
+      String room,
+      String status,
+      String name,
+      String username,
+      String password,
+      String number,
+      String idcard,
+      String adddress,
+      String note,
+      String apartment) async {
     await Firebase.initializeApp().then((value) async {
       await FirebaseFirestore.instance.collection('user').doc(username).set({
         "room": "$room",
@@ -125,6 +125,7 @@ class editroom {
         "idcard": "$idcard",
         "adddress": "$adddress",
         "note": "$note",
+        "apartment": "$apartment"
       }, SetOptions(merge: true)).then((value) => print("Create Success"));
     });
   }
