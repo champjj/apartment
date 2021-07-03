@@ -47,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
       await FirebaseFirestore.instance
           .collection('user')
           .where("password", isEqualTo: '$pass')
+          .where("statusout", isEqualTo: "1")
           .get()
           .then((value) {
         setState(() {

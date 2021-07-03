@@ -29,7 +29,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
       roomnote = '',
       apartmentname = '...',
       overdue = '',
-      outstatus = '';
+      outstatus = '',
+      uname = '';
   double overdueprice = 0;
   int savedate;
   bool check = true;
@@ -165,6 +166,7 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
           overdue = gdata["overdue"];
           roomnote = gdata["detailroom"];
           outstatus = gdata["outstatus"];
+          uname = gdata['username'];
           if (outstatus == '1') {
             check = false;
           } else {
@@ -844,6 +846,12 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
     });
   }
 
+  void changestatus() async {
+    await FirebaseFirestore.instance.collection('user').doc(uname).set(
+        {"statusout": "0"},
+        SetOptions(merge: true)).then((value) => print('changeStatus Success'));
+  }
+
   void cleardata() async {
     await FirebaseFirestore.instance
         .collection(apartmentname)
@@ -862,7 +870,7 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
       "overdue": "0",
       "outstatus": "0",
       "accruedamount": "0",
-    }, SetOptions(merge: true));
+    }, SetOptions(merge: true)).then((value) => changestatus());
   }
 
   ///////////////////////   Room total price   /////////////////////////////////////////
