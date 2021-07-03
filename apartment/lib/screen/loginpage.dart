@@ -125,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
             child: ListTile(
               title: TextButton(
                 onPressed: () {
-                  if ((chuser == 1) && (inpassword > 0) && (statuscha > 0)) {
+                  if ((chuser == 1) && (inpassword > 0)) {
                     setState(() {
                       loginuser(username);
                       Navigator.pushReplacement(
