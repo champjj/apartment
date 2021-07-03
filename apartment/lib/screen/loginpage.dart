@@ -19,6 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   String username;
   dynamic inpassword = 0;
   String ipass;
+  dynamic statuscha;
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
@@ -42,12 +43,23 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+  Future<void> statusch() async {
+    await FirebaseFirestore.instance
+        .collection('user')
+        .where("statusout", isEqualTo: "1")
+        .get()
+        .then((value) {
+      setState(() {
+        statuscha = value.size;
+      });
+    });
+  }
+
   Future<void> chechusermemberpass(String pass) async {
     await Firebase.initializeApp().then((value) async {
       await FirebaseFirestore.instance
           .collection('user')
           .where("password", isEqualTo: '$pass')
-          .where("statusout", isEqualTo: "1")
           .get()
           .then((value) {
         setState(() {
@@ -124,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
             child: ListTile(
               title: TextButton(
                 onPressed: () {
-                  if ((chuser == 1) && (inpassword > 0)) {
+                  if ((chuser == 1) && (inpassword > 0) && (statuscha == 1)) {
                     setState(() {
                       loginuser(username);
                       Navigator.pushReplacement(
