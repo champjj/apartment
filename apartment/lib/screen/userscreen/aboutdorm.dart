@@ -178,7 +178,7 @@ class _AboutdormState extends State<Aboutdorm> {
           Padding(
             padding: const EdgeInsets.only(left: 50),
             child: ListTile(
-              leading: Text('เบอร์โทรศัพท์'),
+              leading: Text('ติดต่อหอพัก'),
             ),
           ),
           ListTile(

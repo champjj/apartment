@@ -270,7 +270,7 @@ class _AdminHomepageState extends State<AdminHomepage> {
         Padding(
           padding: const EdgeInsets.only(left: 60, right: 60),
           child: ListTile(
-            leading: Text('เบอร์โทรศัพท์'),
+            leading: Text('ติดต่อหอพัก'),
             trailing: InkWell(
               onTap: () {
                 dialogeditnumber(context, 'แก้ไขเบอร์โทรศัพท์',
@@ -401,7 +401,7 @@ class _AdminHomepageState extends State<AdminHomepage> {
               Container(
                 width: 200,
                 child: TextFormField(
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.text,
                   onChanged: (nedit) => number = nedit,
                   maxLines: 4,
                   decoration: InputDecoration(

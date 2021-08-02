@@ -106,94 +106,94 @@ class _CheckoutState extends State<Checkout> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40, top: 40),
-                  child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          color: Colors.grey),
-                      child: ListTile(
-                        leading: Text('ของภายในห้อง'),
-                        trailing: Text('ราคา'),
-                      )),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40),
-                  child: Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.grey)),
-                    child: ListTile(
-                      leading: Text(iteinroom[0]),
-                      trailing: Text(itemprice[0]),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40),
-                  child: Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.grey)),
-                    child: ListTile(
-                      leading: Text(iteinroom[1]),
-                      trailing: Text(itemprice[1]),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40),
-                  child: Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.grey)),
-                    child: ListTile(
-                      leading: Text(iteinroom[2]),
-                      trailing: Text(itemprice[2]),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40),
-                  child: Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.grey)),
-                    child: ListTile(
-                      leading: Text(iteinroom[3]),
-                      trailing: Text(itemprice[3]),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40),
-                  child: Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.grey)),
-                    child: ListTile(
-                      leading: Text(iteinroom[4]),
-                      trailing: Text(itemprice[4]),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40),
-                  child: Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.grey)),
-                    child: ListTile(
-                      leading: Text(iteinroom[5]),
-                      trailing: Text(itemprice[5]),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40),
-                  child: Container(
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.grey)),
-                    child: ListTile(
-                      leading: Text(iteinroom[6]),
-                      trailing: Text(itemprice[6]),
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 40, right: 40, top: 40),
+                //   child: Container(
+                //       decoration: BoxDecoration(
+                //           border: Border.all(color: Colors.grey),
+                //           color: Colors.grey),
+                //       child: ListTile(
+                //         leading: Text('ของภายในห้อง'),
+                //         trailing: Text('ราคา'),
+                //       )),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 40, right: 40),
+                //   child: Container(
+                //     decoration:
+                //         BoxDecoration(border: Border.all(color: Colors.grey)),
+                //     child: ListTile(
+                //       leading: Text(iteinroom[0]),
+                //       trailing: Text(itemprice[0]),
+                //     ),
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 40, right: 40),
+                //   child: Container(
+                //     decoration:
+                //         BoxDecoration(border: Border.all(color: Colors.grey)),
+                //     child: ListTile(
+                //       leading: Text(iteinroom[1]),
+                //       trailing: Text(itemprice[1]),
+                //     ),
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 40, right: 40),
+                //   child: Container(
+                //     decoration:
+                //         BoxDecoration(border: Border.all(color: Colors.grey)),
+                //     child: ListTile(
+                //       leading: Text(iteinroom[2]),
+                //       trailing: Text(itemprice[2]),
+                //     ),
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 40, right: 40),
+                //   child: Container(
+                //     decoration:
+                //         BoxDecoration(border: Border.all(color: Colors.grey)),
+                //     child: ListTile(
+                //       leading: Text(iteinroom[3]),
+                //       trailing: Text(itemprice[3]),
+                //     ),
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 40, right: 40),
+                //   child: Container(
+                //     decoration:
+                //         BoxDecoration(border: Border.all(color: Colors.grey)),
+                //     child: ListTile(
+                //       leading: Text(iteinroom[4]),
+                //       trailing: Text(itemprice[4]),
+                //     ),
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 40, right: 40),
+                //   child: Container(
+                //     decoration:
+                //         BoxDecoration(border: Border.all(color: Colors.grey)),
+                //     child: ListTile(
+                //       leading: Text(iteinroom[5]),
+                //       trailing: Text(itemprice[5]),
+                //     ),
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 40, right: 40),
+                //   child: Container(
+                //     decoration:
+                //         BoxDecoration(border: Border.all(color: Colors.grey)),
+                //     child: ListTile(
+                //       leading: Text(iteinroom[6]),
+                //       trailing: Text(itemprice[6]),
+                //     ),
+                //   ),
+                // ),
                 SizedBox(
                   height: 50,
                 ),

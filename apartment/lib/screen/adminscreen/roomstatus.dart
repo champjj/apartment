@@ -304,10 +304,10 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                     child: TextButton(
                       onPressed: () {
                         dialogmsgdeletefloor(
-                            context, 'ยืนยันลบชั้น', 'ยืนยันการลบชั้น');
+                            context, 'ยืนยันการยกเลิกชั้นบนสุด', 'ยืนยันการยกเลิกชั้นบนสุด');
                       },
                       child: Text(
-                        'ลบชั้น',
+                        'ยกเลิกชั้นบนสุด',
                         style: TextStyle(color: Colors.white),
                       ),
                       style: TextButton.styleFrom(
@@ -422,15 +422,15 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                         dialogmsg(context, 'ลบห้องพัก', 'ไม่มีห้องพัก');
                         iroom++;
                       } else if (iroom < 10) {
-                        dialogdelete(context, "ลบห้องพัก",
+                        dialogdelete(context, "ยกเลิกห้องล่าสุด",
                             "คุณต้องการการลบห้อง $ifloor" "0$iroom ใช่หรือไม่");
                       } else {
-                        dialogdelete(context, "ลบห้องพัก",
+                        dialogdelete(context, "ยกเลิกห้องล่าสุด",
                             "คุณต้องการการลบห้อง $ifloor$iroom ใช่หรือไม่");
                       }
                     },
                     child: Text(
-                      'ลบห้อง',
+                      'ยกเลิกห้องล่าสุด',
                       style: TextStyle(color: Colors.white),
                     ),
                     style: TextButton.styleFrom(

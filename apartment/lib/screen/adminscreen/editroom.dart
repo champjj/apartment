@@ -165,7 +165,7 @@ class _EditroomState extends State<Editroom> {
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
-                              labelText: 'username*'),
+                              labelText: 'Username*'),
                         ),
                       ),
                       ListTile(

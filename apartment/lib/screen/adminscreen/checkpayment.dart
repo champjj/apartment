@@ -141,6 +141,12 @@ class _CheckpaymentState extends State<Checkpayment> {
                                               .toString()),
                                         ),
                                         ListTile(
+                                          leading: Text('ค่าห้อง'),
+                                          trailing: Text(_list[index]
+                                                  ["roomprice"]
+                                              .toString()),
+                                        ),
+                                        ListTile(
                                           leading: Text('ค่าน้ำ'),
                                           title: Text(
                                               '$water บาท ${_list[index]["unitwater"]} หน่วย'),

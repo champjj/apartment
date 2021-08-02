@@ -99,7 +99,7 @@ class _UserroomState extends State<Userroom> {
                           title: Text(widget.name),
                         ),
                         ListTile(
-                          leading: Text('ที่อยู่หอพัก     : '),
+                          leading: Text('ที่อยู่     : '),
                           title: Text(address),
                         ),
                         ListTile(
@@ -112,51 +112,51 @@ class _UserroomState extends State<Userroom> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 270),
-              child: Container(
-                decoration: BoxDecoration(border: Border.all()),
-                child: Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(color: Colors.grey),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              child: Text('ของภายในห้อง'),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(), color: Colors.white),
-                            child: Column(
-                              children: [
-                                ListTile(
-                                    title: Center(child: Text(iteinroom[0]))),
-                                ListTile(
-                                    title: Center(child: Text(iteinroom[1]))),
-                                ListTile(
-                                    title: Center(child: Text(iteinroom[2]))),
-                                ListTile(
-                                    title: Center(child: Text(iteinroom[3]))),
-                                ListTile(
-                                    title: Center(child: Text(iteinroom[4]))),
-                                ListTile(
-                                    title: Center(child: Text(iteinroom[5]))),
-                                ListTile(
-                                    title: Center(child: Text(iteinroom[6]))),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 20, right: 270),
+            //   child: Container(
+            //     decoration: BoxDecoration(border: Border.all()),
+            //     child: Column(
+            //       children: [
+            //         Container(
+            //           decoration: BoxDecoration(color: Colors.grey),
+            //           child: Column(
+            //             children: [
+            //               Padding(
+            //                 padding: const EdgeInsets.all(8.0),
+            //                 child: Container(
+            //                   child: Text('ของภายในห้อง'),
+            //                 ),
+            //               ),
+            //               Container(
+            //                 decoration: BoxDecoration(
+            //                     border: Border.all(), color: Colors.white),
+            //                 child: Column(
+            //                   children: [
+            //                     ListTile(
+            //                         title: Center(child: Text(iteinroom[0]))),
+            //                     ListTile(
+            //                         title: Center(child: Text(iteinroom[1]))),
+            //                     ListTile(
+            //                         title: Center(child: Text(iteinroom[2]))),
+            //                     ListTile(
+            //                         title: Center(child: Text(iteinroom[3]))),
+            //                     ListTile(
+            //                         title: Center(child: Text(iteinroom[4]))),
+            //                     ListTile(
+            //                         title: Center(child: Text(iteinroom[5]))),
+            //                     ListTile(
+            //                         title: Center(child: Text(iteinroom[6]))),
+            //                   ],
+            //                 ),
+            //               )
+            //             ],
+            //           ),
+            //         )
+            //       ],
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
