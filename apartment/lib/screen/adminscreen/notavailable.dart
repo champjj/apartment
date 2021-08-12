@@ -48,6 +48,7 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
   double accruedamount = 0;
   double total = 0;
   double roomprice = 0;
+  double insurance = 0;
   String dateday = DateFormat('dd').format(DateTime.now());
   String datemonth = DateFormat('MM').format(DateTime.now());
   String dateyear = DateFormat('yyyy').format(DateTime.now());
@@ -370,7 +371,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
                                 total = accruedamount +
                                     waterprice +
                                     elecprice +
-                                    roomprice;
+                                    roomprice +
+                                    insurance;
                               });
                             },
                             keyboardType: TextInputType.number,
@@ -379,6 +381,32 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
                                 labelText: 'ค่าห้อง'),
                           ),
                         ),
+                        //////////////////////  ค่าประกันห้อง
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: Container(
+                            child: TextFormField(
+                              onChanged: (value) {
+                                setState(() {
+                                  insurance = double.parse(value);
+                                  unitwatermeter =
+                                      afterwatermeter - beforewatermeter;
+                                  waterprice = unitwatermeter * water;
+                                  total = accruedamount +
+                                      waterprice +
+                                      elecprice +
+                                      roomprice +
+                                      insurance;
+                                });
+                              },
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'ประกันห้อง'),
+                            ),
+                          ),
+                        ),
+                        ///////////////////////////////////////////////////////////////
                         Padding(
                           padding: const EdgeInsets.only(top: 10),
                           child: Table(
@@ -401,7 +429,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
                                         total = accruedamount +
                                             waterprice +
                                             elecprice +
-                                            roomprice;
+                                            roomprice +
+                                            insurance;
                                       });
                                     },
                                     keyboardType: TextInputType.number,
@@ -423,7 +452,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
                                         total = accruedamount +
                                             waterprice +
                                             elecprice +
-                                            roomprice;
+                                            roomprice +
+                                            insurance;
                                       });
                                     },
                                     keyboardType: TextInputType.number,
@@ -480,7 +510,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
                                         total = accruedamount +
                                             waterprice +
                                             elecprice +
-                                            roomprice;
+                                            roomprice +
+                                            insurance;
                                       });
                                     },
                                     keyboardType: TextInputType.number,
@@ -503,7 +534,8 @@ class _NotavailableRoomState extends State<NotavailableRoom> {
                                         total = accruedamount +
                                             waterprice +
                                             elecprice +
-                                            roomprice;
+                                            roomprice +
+                                            insurance;
                                       });
                                     },
                                     keyboardType: TextInputType.number,

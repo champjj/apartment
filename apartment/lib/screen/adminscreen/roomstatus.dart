@@ -8,6 +8,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import '../../dialog/dialogbox.dart';
+
 class RoomStatuspage extends StatefulWidget {
   @override
   _RoomStatuspageState createState() => _RoomStatuspageState();
@@ -533,6 +535,9 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
               children: [
                 TextButton(
                     onPressed: () {
+                      if ((iroom - 1) > 0) {
+                        dialogmsg(context, 'ยกเลิกล้มเหลว', 'ไม่สามารถยกเลิกชั้นที่มีห้องอยู่ได้')
+                      }
                       Navigator.pop(context);
                       editroom().deletefloor("$defloor");
                     },
