@@ -537,9 +537,10 @@ class _RoomStatuspageState extends State<RoomStatuspage> {
                     onPressed: () {
                       if ((iroom - 1) > 0) {
                         dialogmsg(context, 'ยกเลิกล้มเหลว', 'ไม่สามารถยกเลิกชั้นที่มีห้องอยู่ได้')
-                      }
+                      } else {
                       Navigator.pop(context);
                       editroom().deletefloor("$defloor");
+                      }
                     },
                     child: Text('ยืนยัน')),
                 TextButton(
